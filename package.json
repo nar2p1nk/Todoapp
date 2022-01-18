@@ -1,0 +1,21 @@
+{
+  "name": "todoapp2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack ./frontend/src/index.js -o ./frontend/bin -d eval --watch --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mithril": "^2.0.4",
+    "sqlite3": "^5.0.2",
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
