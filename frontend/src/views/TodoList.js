@@ -7,8 +7,8 @@ module.exports = {
         return m('.app',[
             m('h1','Todo app'),
             m('.post',[
-                m('form',{action:'http://localhost:8080/',method:'POST'},[
-                    m('input',{type:'text'}),
+                m('form',{action:'http://127.0.0.1:8080/',method:'POST'},[
+                    m('input',{type:'text',name:'todo'}),
                     m('input',{type:'submit',value:'submit'})
                 ])
             ]),
