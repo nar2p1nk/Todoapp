@@ -14,7 +14,7 @@ module.exports = {
             ]),
             m('.list',[
                 m('h2','Tasks to complete:'),
-                m('form',{action:'http://localhost:8080/',method:'POST'},[
+                m('form',{action:'http://localhost:8080/list',method:'POST'},[
                     m('ul',Todos.list.map(function(todo){
                         return m('li',[m('h3',[
                             m('label',{for:'todo'},todo.todo),

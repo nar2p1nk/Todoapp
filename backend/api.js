@@ -7,6 +7,8 @@ const bodyParser = require('body-parser')
 
 app.use(cors())
 
+var forPost = 'http://127.0.0.1:8000/'
+
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
@@ -19,10 +21,23 @@ app.post('/',(req,res)=>{
     db.run(`INSERT INTO todos(todo) VALUES(?)`,[todo],(err)=>{
         if(err){res.status(400).send(err.message)}
         else{
-            res.redirect('http://127.0.0.1:41401/')
+            res.redirect(forPost)
             console.log(todo)
         }
     })
+})
+
+app.post('/list',(req,res)=>{
+    console.log(req.body.todo)
+    req.body.todo.map((id)=>{
+        db.run(`DELETE FROM todos WHERE id = ?;`,[id],(err)=>{
+            if(err){console.log(err.message)}
+            else{
+                console.log(id)
+            }
+        })
+    })
+    res.redirect(forPost)
 })
 
 app.get('/api/todo',(req,res)=>{
