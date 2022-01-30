@@ -2,7 +2,7 @@ var m = require('mithril')
 
 var Todos ={
     list:[],
-    loadList:async function(){
+    loadList:function(){
         return m.request({
             method: "GET",
             url: "http://127.0.0.1:8080/api/todo",

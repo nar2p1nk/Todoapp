@@ -25,7 +25,7 @@ eval("var m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.
   \*************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\")\n\nvar Todos ={\n    list:[],\n    loadList:async function(){\n        return m.request({\n            method: \"GET\",\n            url: \"http://127.0.0.1:8080/api/todo\",\n            withCredentials:false,\n        })\n            .then(function(results){\n                Todos.list = results.rows\n                console.log(Todos.list)\n            })\n    }\n}\n\nmodule.exports = Todos\n\n\n//# sourceURL=webpack://todoapp2/./frontend/src/model/todos.js?");
+eval("var m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\")\n\nvar Todos ={\n    list:[],\n    loadList:function(){\n        return m.request({\n            method: \"GET\",\n            url: \"http://127.0.0.1:8080/api/todo\",\n            withCredentials:false,\n        })\n            .then(function(results){\n                Todos.list = results.rows\n                console.log(Todos.list)\n            })\n    }\n}\n\nmodule.exports = Todos\n\n\n//# sourceURL=webpack://todoapp2/./frontend/src/model/todos.js?");
 
 /***/ }),
 
@@ -35,7 +35,7 @@ eval("var m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.
   \****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\");\nvar Todos = __webpack_require__(/*! ../model/todos */ \"./frontend/src/model/todos.js\")\n\nmodule.exports = {\n    oninit:Todos.loadList,\n    view:function(){\n        return m('todo-list',Todos.list.map(function(todo){\n            return m('todo-item',[\n                m('p',`${todo.todo}`)\n            ])\n        }))\n    }\n}\n\n\n//# sourceURL=webpack://todoapp2/./frontend/src/views/TodoList.js?");
+eval("var m = __webpack_require__(/*! mithril */ \"./node_modules/mithril/index.js\");\nvar Todos = __webpack_require__(/*! ../model/todos */ \"./frontend/src/model/todos.js\")\n\nmodule.exports = {\n    oninit:Todos.loadList,\n    view:function(){\n        return m('.app',[\n            m('h1','Todo app'),\n            m('.post',[\n                m('form',{action:'http://localhost:8080/',method:'POST'},[\n                    m('input',{type:'text'}),\n                    m('input',{type:'submit',value:'submit'})\n                ])\n            ]),\n            m('.list',[\n                m('h2','Tasks to complete:'),\n                m('form',{action:'http://localhost:8080/',method:'POST'},[\n                    m('ul',Todos.list.map(function(todo){\n                        return m('li',[m('h3',[\n                            m('label',{for:'todo'},todo.todo),\n                            m('input',{\n                                type:'checkbox',name:'todo',value:todo.id})\n                        ])])\n                    })),\n                    m('input',{type:'submit',value:'delete selected tasks'})\n                ] )  \n            ])\n        ])\n    }\n}\n\n\n//# sourceURL=webpack://todoapp2/./frontend/src/views/TodoList.js?");
 
 /***/ }),
 

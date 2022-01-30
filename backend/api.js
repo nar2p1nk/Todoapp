@@ -3,7 +3,7 @@ const db = require('./database');
 const port = 8080;
 const app = express();
 const cors = require('cors');
-const bodyParser = require('bodyParser')
+const bodyParser = require('body-parser')
 
 app.use(cors())
 
