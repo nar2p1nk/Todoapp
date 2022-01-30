@@ -8,7 +8,7 @@ module.exports = {
             m('h1','Todo app'),
             m('.post',[
                 m('form',{action:'http://127.0.0.1:8080/',method:'POST'},[
-                    m('input',{type:'text',name:'todo'}),
+                    m('input',{type:'text',name:'todo',required:true}),
                     m('input',{type:'submit',value:'submit'})
                 ])
             ]),
